@@ -79,7 +79,15 @@ dtb-$(CONFIG_ARCH_MXC) += imx8mp-evk.dtb imx8mp-evk-root.dtb imx8mp-evk-inmate.d
 dtb-$(CONFIG_ARCH_MXC) += imx8mq-evk.dtb imx8mq-evk-rpmsg.dtb imx8mq-evk-pcie1-m2.dtb imx8mq-evk-usd-wifi.dtb \
 			  imx8mq-evk-usdhc2-m2.dtb \
 			  imx8mq-evk-no-product.dtb imx8mq-evk-no-dynamic_partition.dtb \
-			  imx8mq-evk-no-product-no-dynamic_partition.dtb
+			  imx8mq-evk-no-product-no-dynamic_partition.dtb \
+			  imx8mq-var-dart-wifi-lvds.dtb \
+			  imx8mq-var-dart-wifi-lvds-no-dynamic_partition.dtb \
+			  imx8mq-var-dart-wifi-hdmi.dtb \
+			  imx8mq-var-dart-wifi-hdmi-no-dynamic_partition.dtb \
+			  imx8mq-var-dart-wifi-lvds-hdmi.dtb \
+			  imx8mq-var-dart-wifi-lvds-hdmi-no-dynamic_partition.dtb \
+			  imx8mq-var-dart-wifi-dp.dtb \
+			  imx8mq-var-dart-wifi-dp-no-dynamic_partition.dtb
 dtb-$(CONFIG_ARCH_MXC) += imx8mq-evk-ak4497.dtb imx8mq-evk-audio-tdm.dtb imx8mq-evk-pdm.dtb
 dtb-$(CONFIG_ARCH_MXC) += imx8mq-evk-root.dtb imx8mq-evk-inmate.dtb
 dtb-$(CONFIG_ARCH_MXC) += imx8mq-evk-lcdif-rm67191.dtb imx8mq-evk-lcdif-adv7535.dtb

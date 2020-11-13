@@ -76,8 +76,7 @@
 
 	chosen {
 		stdout-path = &uart1;
-		bootargs = "console=ttymxc0,115200 ";
-		bootargs-append = "androidboot.primary_display=imx-drm";
+		bootargs-append = "console=ttymxc0,115200 earlycon=imxuart,0x30860000,115200 androidboot.console=ttymxc0 androidboot.primary_display=imx-drm";
 	};
 
 	/delete-node/ memory@40000000;

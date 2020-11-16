@@ -740,7 +740,7 @@
 };
 
 &usb_dwc3_0 {
-	dr_mode = "peripheral";
+	dr_mode = "otg";
 	hnp-disable;
 	srp-disable;
 	adp-disable;

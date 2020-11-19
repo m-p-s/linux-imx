@@ -63,7 +63,7 @@
                 compatible = "net,rfkill-gpio";
                 pinctrl-names = "default";
                 pinctrl-0 = <&pinctrl_bt>;
-                reset-gpios = <&gpio2 10 GPIO_ACTIVE_HIGH>;
+                reset-gpios = <&gpio2 9 GPIO_ACTIVE_HIGH>;
                 name = "bt_rfkill";
                 type = "bluetooth";
                 status = "okay";

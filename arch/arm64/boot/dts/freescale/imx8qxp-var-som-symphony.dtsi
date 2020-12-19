@@ -176,6 +176,16 @@
 	};
 };
 
+/* Bluetooth/Header */
+&lpuart0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_lpuart0>;
+	dma-names = "tx","rx";
+	dmas = <&edma2 9 0 0>,
+		<&edma2 8 0 1>;
+	status = "disabled";
+};
+
 /* Header */
 &lpuart1 {
 	pinctrl-names = "default";
@@ -242,15 +252,11 @@
 		status = "okay";
 		compatible = "ovti,ov5640";
 		reg = <0x3c>;
-#if 0
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_mipi_csi0>;
-#endif
 		clocks = <&xtal24m>;
 		clock-names = "xclk";
 		csi_id = <0>;
 		powerdown-gpios = <&lsio_gpio0 26 GPIO_ACTIVE_HIGH>;
-		reset-gpios = <&lsio_gpio0 12 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&lsio_gpio0 12 GPIO_ACTIVE_LOW>;
 		mclk = <24000000>;
 		mclk_source = <0>;
 		mipi_csi;
@@ -447,32 +453,18 @@
 
 &isi_1 {
 	status = "disabled";
-
-	cap_device {
-		status = "disabled";
-	};
 };
 
 &isi_2 {
 	status = "disabled";
-
-	cap_device {
-		status = "disabled";
-	};
 };
 
 &isi_3 {
 	status = "disabled";
-
-	cap_device {
-		status = "disabled";
-	};
 };
 
 &isi_4 {
-	interface = <6 0 2>;
-	parallel_csi;
-	status = "okay";
+	status = "disabled";
 };
 
 &irqsteer_csi0 {
@@ -604,7 +596,7 @@
 	status = "okay";
 
 	spidev@0 {
-		compatible = "spidev";
+		compatible = "var,spidev";
 		spi-max-frequency = <12000000>;
 		reg = <0>;
 		status = "okay";

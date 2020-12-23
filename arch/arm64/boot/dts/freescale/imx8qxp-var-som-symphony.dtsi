@@ -319,8 +319,8 @@
 		clocks = <&pi0_misc_lpcg 0>;
 		assigned-clocks = <&pi0_misc_lpcg 0>;
 		clock-names = "xclk";
-		powerdown-gpios = <&lsio_gpio3 2 GPIO_ACTIVE_LOW>;
-		reset-gpios = <&lsio_gpio3 3 GPIO_ACTIVE_HIGH>;
+		powerdown-gpios = <&lsio_gpio3 2 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&lsio_gpio3 3 GPIO_ACTIVE_LOW>;
 		csi_id = <0>;
 		mclk = <24000000>;
 		mclk_source = <0>;
@@ -464,7 +464,13 @@
 };
 
 &isi_4 {
-	status = "disabled";
+	parallel_csi;
+	interface = <6 0 2>;
+	status = "okay";
+
+	cap_device {
+		status = "okay";
+	};
 };
 
 &irqsteer_csi0 {

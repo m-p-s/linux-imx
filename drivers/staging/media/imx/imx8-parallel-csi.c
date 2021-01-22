@@ -591,6 +591,18 @@ static int mxc_pcsi_s_power(struct v4l2_subdev *sd, int on)
 	return v4l2_subdev_call(sen_sd, core, s_power, on);
 }
 
+static long mxc_pcsi_ioctl_new(struct v4l2_subdev *sd, unsigned int cmd, void *arg)
+{
+	struct mxc_parallel_csi_dev *pcsidev = sd_to_mxc_pcsi_dev(sd);
+        struct v4l2_subdev *sen_sd;
+
+        sen_sd = mxc_get_remote_subdev(pcsidev, __func__);
+        if (!sen_sd)
+                return -EINVAL;
+
+        return v4l2_subdev_call(sen_sd, core, ioctl, cmd, arg);
+}
+
 static int mxc_pcsi_g_frame_interval(struct v4l2_subdev *sd,
 				struct v4l2_subdev_frame_interval *interval)
 {
@@ -680,6 +692,7 @@ static struct v4l2_subdev_pad_ops pcsi_pad_ops = {
 
 static struct v4l2_subdev_core_ops pcsi_core_ops = {
 	.s_power = mxc_pcsi_s_power,
+	.ioctl = mxc_pcsi_ioctl_new,
 };
 
 static struct v4l2_subdev_video_ops pcsi_video_ops = {

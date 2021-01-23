@@ -251,8 +251,6 @@
 		status = "okay";
 		compatible = "ovti,ov5640";
 		reg = <0x3c>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_mipi_csi0>;
 		clocks = <&xtal24m>;
 		clock-names = "xclk";
 		csi_id = <0>;
@@ -454,26 +452,14 @@
 
 &isi_1 {
 	status = "disabled";
-
-	cap_device {
-		status = "disabled";
-	};
 };
 
 &isi_2 {
 	status = "disabled";
-
-	cap_device {
-		status = "disabled";
-	};
 };
 
 &isi_3 {
 	status = "disabled";
-
-	cap_device {
-		status = "disabled";
-	};
 };
 
 &isi_4 {

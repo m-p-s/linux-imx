@@ -54,3 +54,8 @@
 &lpuart0 {
 	status = "okay";
 };
+
+/delete-node/ &emvsim0;
+/delete-node/ &emvsim0_lpcg;
+/delete-node/ &adc1;
+/delete-node/ &adc1_lpcg;

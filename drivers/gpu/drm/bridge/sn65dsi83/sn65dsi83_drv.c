@@ -9,8 +9,11 @@
 #include <linux/of_device.h>
 #include <linux/of_graph.h>
 #include <linux/slab.h>
+#include <linux/delay.h>
 
-#include <drm/drmP.h>
+#//include <drm/drmP.h>
+#include <drm/drm_bridge.h>
+#include <drm/drm_print.h>
 #include <drm/drm_atomic.h>
 #include <drm/drm_atomic_helper.h>
 #include <drm/drm_edid.h>
@@ -76,9 +79,9 @@ static int sn65dsi83_connector_get_modes(struct drm_connector *connector)
     if (brg->vm.flags & DISPLAY_FLAGS_DE_LOW)
         *bus_flags |= DRM_BUS_FLAG_DE_LOW;
     if (brg->vm.flags & DISPLAY_FLAGS_PIXDATA_NEGEDGE)
-        *bus_flags |= DRM_BUS_FLAG_PIXDATA_NEGEDGE;
+        *bus_flags |= DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE;
     if (brg->vm.flags & DISPLAY_FLAGS_PIXDATA_POSEDGE)
-        *bus_flags |= DRM_BUS_FLAG_PIXDATA_POSEDGE;
+        *bus_flags |= DRM_BUS_FLAG_PIXDATA_DRIVE_POSEDGE;
 
     ret = drm_display_info_set_bus_formats(&connector->display_info,
                            &bus_format, 1);
@@ -277,6 +280,8 @@ static int sn65dsi83_parse_dt(struct device_node *np,
     return 0;
 }
 
+static int g_defer = 2;
+
 static int sn65dsi83_probe(struct i2c_client *i2c,
     const struct i2c_device_id *id)
 {
@@ -284,9 +289,16 @@ static int sn65dsi83_probe(struct i2c_client *i2c,
     struct device *dev = &i2c->dev;
     int ret;
 
-    dev_dbg(dev,"%s\n",__func__);
+    dev_err(dev,"%s ++++++++++++++++\n",__func__);
     if (!dev->of_node)
         return -EINVAL;
+
+	if(g_defer != 0) {
+		g_defer--;
+        dev_err(dev, "+++++++++++DEFER PROBE");
+		return -EPROBE_DEFER;
+	}
+
 
     sn65dsi83 = devm_kzalloc(dev, sizeof(*sn65dsi83), GFP_KERNEL);
     if (!sn65dsi83)

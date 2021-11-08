@@ -20,8 +20,9 @@
 #include <linux/of_device.h>
 #include <linux/of_graph.h>
 #include <linux/slab.h>
+#include <linux/delay.h>
 
-#include <drm/drmP.h>
+//#include <drm/drmP.h>
 #include <drm/drm_atomic.h>
 #include <drm/drm_atomic_helper.h>
 #include <drm/drm_edid.h>
@@ -374,6 +375,8 @@ static int sn65dsi83_brg_configure(struct sn65dsi83_brg *brg)
     SN65DSI83_WRITE(SN65DSI83_REG_3D,0x00);
     SN65DSI83_WRITE(SN65DSI83_REG_3E,0x00);
 
+
+    dev_dbg(&client->dev,"%s _____________EXIT___________\n",__func__);
     return 0;
 }
 

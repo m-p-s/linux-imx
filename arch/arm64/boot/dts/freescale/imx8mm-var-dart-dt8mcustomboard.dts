@@ -195,7 +195,7 @@
 	};
 
 	ov5640_mipi1: ov5640_mipi1@3c {
-		status = "okay";
+		status = "disabled";
 		compatible = "ovti,ov5640_mipi";
 		reg = <0x3c>;
 		clocks = <&clk IMX8MM_CLK_CLKO1>;
@@ -304,7 +304,7 @@
 				 <&clk IMX8MM_SYS_PLL2_250M>;
 	ext_osc = <1>;
 	reset-gpio = <&pca6408_2 3 GPIO_ACTIVE_LOW>;
-	status = "disabled";
+	status = "okay";
 };
 
 &pwm1 {

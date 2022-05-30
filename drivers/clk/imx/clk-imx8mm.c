@@ -513,7 +513,9 @@ static int imx8mm_clocks_probe(struct platform_device *pdev)
 	hws[IMX8MM_CLK_UART1] = imx8m_clk_hw_composite("uart1", imx8mm_uart1_sels, base + 0xaf00);
 	hws[IMX8MM_CLK_UART2] = imx8m_clk_hw_composite_critical("uart2", imx8mm_uart2_sels, base + 0xaf80);
 	hws[IMX8MM_CLK_UART3] = imx8m_clk_hw_composite("uart3", imx8mm_uart3_sels, base + 0xb000);
+	pr_err("Before imx8m_clk_hw_composite : UART4++++++++++++++\n");
 	hws[IMX8MM_CLK_UART4] = imx8m_clk_hw_composite("uart4", imx8mm_uart4_sels, base + 0xb080);
+	pr_err("After imx8m_clk_hw_composite : UART4++++++++++++++\n");
 	hws[IMX8MM_CLK_USB_CORE_REF] = imx8m_clk_hw_composite("usb_core_ref", imx8mm_usb_core_sels, base + 0xb100);
 	hws[IMX8MM_CLK_USB_PHY_REF] = imx8m_clk_hw_composite("usb_phy_ref", imx8mm_usb_phy_sels, base + 0xb180);
 	hws[IMX8MM_CLK_GIC] = imx8m_clk_hw_composite_critical("gic", imx8mm_gic_sels, base + 0xb200);
@@ -640,6 +642,7 @@ static int imx8mm_clocks_probe(struct platform_device *pdev)
 
 	imx_register_uart_clocks(4);
 
+	pr_err("+++++++++++++++++++++++++++++++++++\n");
 	return 0;
 
 unregister_hws:
